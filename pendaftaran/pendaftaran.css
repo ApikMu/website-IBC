@@ -1,0 +1,87 @@
+@import url('../style.css');
+
+body.registration-page { background: #0b4f32; }
+    .court-pattern {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background-color: #176b43;
+      background-image:
+        linear-gradient(90deg, transparent 49.7%, rgba(239, 250, 239, 0.9) 49.7%, rgba(239, 250, 239, 0.9) 50.3%, transparent 50.3%),
+        linear-gradient(0deg, transparent 37.3%, rgba(239, 250, 239, 0.9) 37.3%, rgba(239, 250, 239, 0.9) 37.65%, transparent 37.65%),
+        linear-gradient(0deg, transparent 62.35%, rgba(239, 250, 239, 0.9) 62.35%, rgba(239, 250, 239, 0.9) 62.7%, transparent 62.7%),
+        linear-gradient(90deg, transparent 13.5%, rgba(239, 250, 239, 0.9) 13.5%, rgba(239, 250, 239, 0.9) 13.85%, transparent 13.85%),
+        linear-gradient(90deg, transparent 86.15%, rgba(239, 250, 239, 0.9) 86.15%, rgba(239, 250, 239, 0.9) 86.5%, transparent 86.5%),
+        linear-gradient(0deg, transparent 7%, rgba(239, 250, 239, 0.95) 7%, rgba(239, 250, 239, 0.95) 7.35%, transparent 7.35%),
+        linear-gradient(0deg, transparent 92.65%, rgba(239, 250, 239, 0.95) 92.65%, rgba(239, 250, 239, 0.95) 93%, transparent 93%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 42%, rgba(4, 49, 29, 0.16));
+      background-size: 100% 100%;
+    }
+
+    .court-pattern::before {
+      content: '';
+      position: absolute;
+      inset: 7% 7%;
+      z-index: -1;
+      border: 3px solid rgba(239, 250, 239, 0.9);
+      box-shadow: inset 0 0 0 3px rgba(8, 74, 45, 0.2), 0 0 0 9999px rgba(5, 63, 38, 0.16);
+      pointer-events: none;
+    }
+
+    .collage-photo {
+      position: absolute;
+      width: clamp(12rem, 30vw, 22rem);
+      height: clamp(9rem, 22vw, 16rem);
+      object-fit: cover;
+      border: 8px solid rgba(239, 250, 239, 0.82);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
+      opacity: 0.78;
+    }
+
+    .collage-photo-umb { top: -3rem; left: -3rem; transform: rotate(-7deg); }
+    .collage-photo-unla { bottom: -3rem; left: -3rem; transform: rotate(6deg); }
+    .collage-photo-pengurus { top: -3rem; right: -3rem; transform: rotate(6deg); }
+    .collage-photo-raker { right: -3rem; bottom: -3rem; transform: rotate(-7deg); }
+
+    @media (max-width: 640px) {
+      .collage-photo { width: 11rem; height: 8.5rem; opacity: 0.5; }
+      .collage-photo-umb, .collage-photo-unla { left: -4rem; }
+      .collage-photo-pengurus, .collage-photo-raker { right: -4rem; }
+    }
+
+    @keyframes registration-page-fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes registration-page-image-in {
+      from { opacity: 0; transform: scale(1.04); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    body.registration-page main > section,
+    body.registration-page main > section > div > *,
+    body.registration-page main > section img {
+      animation: registration-page-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    body.registration-page main > section { animation-delay: 0.08s; }
+    body.registration-page main > section > div > *:nth-child(1) { animation-delay: 0.16s; }
+    body.registration-page main > section > div > *:nth-child(2) { animation-delay: 0.28s; }
+    body.registration-page main > section img { animation: registration-page-image-in 0.9s ease-out both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.registration-page main > section,
+      body.registration-page main > section > div > *,
+      body.registration-page main > section img {
+        animation: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }

@@ -1,0 +1,4 @@
+@import url('../style.css');
+@import url('../styles/detail.css');
+
+body.detail-page { --detail-accent: #475569; }
