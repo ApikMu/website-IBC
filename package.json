@@ -1,0 +1,16 @@
+{
+  "name": "ikopin-badminton-club-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:css && node scripts/build.mjs",
+    "build:css": "tailwindcss -c tailwind.config.cjs -i ./assets/css/input.css -o ./assets/css/site.css --minify",
+    "dev": "tailwindcss -c tailwind.config.cjs -i ./assets/css/input.css -o ./assets/css/site.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

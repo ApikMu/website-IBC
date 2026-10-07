@@ -1,0 +1,89 @@
+body.detail-page { background: #f4fbf7; }
+body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab308); }
+    .doc-card { background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(236,253,245,0.88)); }
+
+    @keyframes detail-page-fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes detail-page-image-in {
+      from { opacity: 0; scale: 1.03; }
+      to { opacity: 1; scale: 1; }
+    }
+
+    body.detail-page > nav,
+    body.detail-page main > section,
+    body.detail-page > footer,
+    body.detail-page footer > div > *,
+    body.detail-page #detail-content > * {
+      animation: detail-page-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    body.detail-page > nav { animation-delay: 0.05s; }
+    body.detail-page main > section:nth-child(1) { animation-delay: 0.16s; }
+    body.detail-page main > section:nth-child(2) { animation-delay: 0.28s; }
+    body.detail-page #detail-content > *:nth-child(2) { animation-delay: 0.18s; }
+    body.detail-page #detail-content > *:nth-child(3) { animation-delay: 0.26s; }
+    body.detail-page #detail-content > *:nth-child(4) { animation-delay: 0.34s; }
+    body.detail-page > footer { animation-delay: 0.42s; }
+    body.detail-page img { animation: detail-page-image-in 0.9s ease-out both; }
+
+    .turnamen-scroll-card {
+      position: relative;
+      transition: transform 300ms ease;
+    }
+
+    .turnamen-scroll-card.is-scroll-highlighted {
+      z-index: 1;
+      transform: translateY(-4px) scale(1.025);
+    }
+
+    .documentation-gallery-image {
+      aspect-ratio: 4 / 3;
+      transition: transform 500ms ease, filter 500ms ease;
+    }
+
+    .documentation-gallery-card {
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .documentation-gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+    }
+
+    .documentation-gallery-card:hover .documentation-gallery-image {
+      transform: scale(1.05);
+      filter: brightness(1.05);
+    }
+
+    .turnamen-featured-image {
+      grid-column: 1 / -1;
+    }
+
+    .turnamen-featured-photo {
+      aspect-ratio: 4160 / 1986;
+    }
+
+    .turnamen-banner-focus {
+      object-position: center 56%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.detail-page > nav,
+      body.detail-page main > section,
+      body.detail-page > footer,
+      body.detail-page footer > div > *,
+      body.detail-page #detail-content > *,
+      body.detail-page img {
+        animation: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }

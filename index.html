@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UKM IKOPIN BADMINTON CLUB</title>
+    <meta name="description" content="Kenali UKM IKOPIN BADMINTON CLUB: program kerja, kegiatan, kepengurusan, latihan rutin, dan informasi pendaftaran anggota.">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UKM IKOPIN BADMINTON CLUB">
+    <meta property="og:description" content="Kenali program kerja, kegiatan, dan keluarga UKM IKOPIN BADMINTON CLUB.">
+    <link rel="canonical" href="./">
+    <link rel="icon" href="Image/Logo/favicon.png?v=3" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+<body class="page-load overflow-x-hidden font-sans antialiased text-slate-800 bg-slate-50">
+<div id="home-page">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" class="flex-shrink-0 flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                    <img src="Image/Logo/Organisasi/LOGO_IBC.webp" alt="Logo UKM IBC" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-glow" />
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.22em] text-blue-600 font-semibold">UKM IBC</p>
+                        <span class="font-bold text-base sm:text-xl text-slate-900">IKOPIN BADMINTON CLUB</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-7">
+                    <a href="#home" class="text-slate-600 hover:text-blue-600 font-medium transition">BERANDA</a>
+                    <details class="relative group">
+                        <summary class="flex cursor-pointer list-none items-center gap-2 text-slate-600 hover:text-blue-600 font-medium transition">
+                            TENTANG KAMI <i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180"></i>
+                        </summary>
+                        <div class="absolute right-0 mt-4 w-64 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
+                            <a href="#profil" class="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition">Profil</a>
+                            <a href="#kegiatan" class="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition">Kegiatan</a>
+                            <a href="#program-kerja" class="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition">Program Kerja</a>
+                            <a href="pengurus/pengurus.html?return=%23management-photo" class="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition">Struktur Kepengurusan</a>
+                        </div>
+                    </details>
+                    <a href="#pendaftaran" class="rounded-full bg-amber-400 px-5 py-2.5 text-sm font-extrabold text-slate-950 shadow-lg shadow-amber-400/30 hover:bg-amber-300 transition">DAFTAR ANGGOTA</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="rounded-lg p-2 text-slate-700 hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden max-h-[calc(100vh-5rem)] overflow-y-auto md:hidden bg-white border-t border-slate-100 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">BERANDA</a>
+                <details class="rounded-md">
+                    <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">
+                        TENTANG KAMI <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </summary>
+                    <div class="ml-3 border-l-2 border-blue-100 pl-2">
+                        <a href="#profil" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600">Profil</a>
+                        <a href="#kegiatan" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600">Kegiatan</a>
+                        <a href="#program-kerja" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600">Program Kerja</a>
+                        <a href="pengurus/pengurus.html?return=%23management-photo" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600">Struktur Kepengurusan</a>
+                    </div>
+                </details>
+                <a href="#pendaftaran" class="block rounded-xl bg-amber-400 px-3 py-3 text-base font-extrabold text-slate-950 hover:bg-amber-300">DAFTAR ANGGOTA</a>
+            </div>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-24 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-slate-900 focus:shadow-lg">Lewati ke konten utama</a>
+    <main id="main-content" tabindex="-1">
+    <section id="home" class="relative hero-pattern overflow-hidden pt-32 pb-24 lg:pt-36 lg:pb-28">
+        <div id="hero-left-photo" class="absolute inset-y-0 left-0 bg-cover"></div>
+        <div id="hero-photo" class="absolute inset-0 opacity-50 bg-cover bg-center"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl md:max-w-none text-center text-slate-900">
+                <h1 class="hero-main-title mt-6 text-slate-950">
+                    <span class="hero-line hero-line--small mt-4 text-center">SELAMAT DATANG DI</span>
+                    <span class="hero-line hero-line--medium mt-3 text-center">UNIT KEGIATAN MAHASISWA</span>
+                    <span class="hero-line hero-line--large mt-3 text-center">IKOPIN BADMINTON CLUB</span>
+                    <span class="hero-slogan mt-4 block text-sm md:text-lg font-extrabold tracking-wide text-yellow-500">SMASH SMASH SMASH JUARAAA!</span>
+                </h1>
+
+                <p class="mx-auto mt-6 max-w-2xl text-base font-bold leading-relaxed text-slate-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-lg md:text-xl">
+                    UKM IKOPIN BADMINTON CLUB adalah tempat mahasiswa mengembangkan kemampuan bulu tangkis, membangun karakter, dan mempererat kebersamaan. Kami hadir untuk membentuk anggota yang disiplin, berintegritas, dan siap berkembang bersama.
+                </p>
+
+                <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <a href="#program-kerja" class="inline-flex items-center justify-center rounded-full border border-blue-300/80 bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-500 hover:shadow-blue-400/40 sm:px-10 sm:py-5 sm:text-lg">Program Kami</a>
+                    <a href="#management-photo" class="management-button inline-flex items-center justify-center rounded-full border px-8 py-4 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 sm:px-10 sm:py-5 sm:text-lg">Kepengurusan</a>
+                </div>
+
+                <div class="mt-10 flex flex-wrap justify-center gap-6 text-sm text-slate-600">
+                    <div class="flex basis-full items-center justify-center gap-2 text-center sm:basis-auto"><i class="fa-solid fa-circle-check text-blue-600"></i><span>Unit Kegiatan Mahasiswa<br class="sm:hidden"> IKOPIN BADMINTON CLUB</span></div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-table-tennis-paddle-ball text-yellow-500"></i> Latihan Rutin</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-people-group text-emerald-600"></i> Keluarga IBC</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="profil" class="overflow-x-clip py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative flex justify-center">
+                    <div class="absolute -inset-8 rounded-full bg-blue-200/40 blur-3xl"></div>
+                    <img src="Image/Logo/Organisasi/LOGO_IBC.webp" alt="Logo Organisasi IKOPIN Badminton Club" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-8 border-white shadow-2xl">
+                </div>
+                <div>
+                    <p class="text-sm uppercase tracking-[0.2em] text-blue-600 font-semibold mb-3">Profil UKM</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">IKOPIN BADMINTON CLUB</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        IKOPIN Badminton Club bisa disebut IBC hadir sebagai wadah bagi mahasiswa untuk menyalurkan minat di bidang olahraga, memperkuat karakter, dan menumbuhkan rasa percaya diri melalui latihan yang terarah serta kompetisi yang sehat. Berdiri sejak 9 Desember 1984, hingga saat ini IBC terus beregenerasi sebagai pusat pengembangan minat dan bakat. Fokus kami tidak hanya pada bidang olahraga; IBC juga memiliki lini keorganisasian yang kuat guna memberikan ruang bagi anggota untuk mendapatkan pengalaman struktural, menjalankan program kerja, dan membangun kebersamaan dalam satu keluarga besar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management-photo" class="scroll-mt-24 bg-slate-50 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-[0.7fr_1.3fr] gap-8 items-center rounded-3xl border border-blue-100 bg-white p-6 shadow-sm">
+                <div>
+                    <p class="text-sm uppercase tracking-[0.2em] text-blue-600 font-semibold mb-3">Kepengurusan</p>
+                    <h2 class="text-3xl font-bold text-slate-900">Kenali Pengurus UKM IBC</h2>
+                    <p class="mt-4 text-slate-600 leading-relaxed">Pilih bagian kepengurusan yang ingin kamu lihat:</p>
+                    <div class="mt-4 grid grid-cols-2 gap-2 text-sm font-semibold">
+                        <a href="pengurus/pengurus.html?group=ketua-umum&return=%23management-photo" class="rounded-xl bg-blue-50 px-3 py-2 text-blue-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Ketua Umum</a>
+                        <a href="pengurus/pengurus.html?group=wakil-ketua-umum&return=%23management-photo" class="rounded-xl bg-blue-50 px-3 py-2 text-blue-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Wakil Ketua Umum</a>
+                        <a href="pengurus/pengurus.html?group=sekretaris-umum&return=%23management-photo" class="rounded-xl bg-blue-50 px-3 py-2 text-blue-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Sekretaris Umum</a>
+                        <a href="pengurus/pengurus.html?group=bendahara-umum&return=%23management-photo" class="rounded-xl bg-blue-50 px-3 py-2 text-blue-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Bendahara Umum</a>
+                        <a href="pengurus/pengurus.html?group=sdm&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Divisi SDM</a>
+                        <a href="pengurus/pengurus.html?group=humas&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Divisi Humas</a>
+                        <a href="pengurus/pengurus.html?group=media-kreatif-design&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Media Kreatif & Design</a>
+                        <a href="pengurus/pengurus.html?group=kepelatihan&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Divisi Kepelatihan</a>
+                        <a href="pengurus/pengurus.html?group=lapangan&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Divisi Lapangan</a>
+                        <a href="pengurus/pengurus.html?group=rto&return=%23management-photo" class="rounded-xl bg-slate-100 px-3 py-2 text-slate-700 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-md transition">Divisi RTO</a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-200/40 to-cyan-200/40 blur-2xl rounded-[2rem]"></div>
+                    <a id="foto-pengurus" href="pengurus/pengurus.html?return=%23management-photo" class="group relative block scroll-mt-24 overflow-hidden rounded-[2rem]" aria-label="Lihat struktur kepengurusan lengkap">
+                        <img src="Image/Tampilan/PENGURUS.webp" alt="Foto Pengurus UKM IBC - klik untuk melihat struktur lengkap" loading="lazy" decoding="async" class="relative w-full h-[420px] object-cover rounded-[2rem] shadow-2xl border border-white/60 transition duration-500 group-hover:scale-[1.04] group-hover:brightness-110">
+                        <span class="absolute inset-x-6 bottom-6 flex items-center justify-between rounded-xl bg-slate-950/80 px-4 py-3 text-sm font-bold text-white opacity-0 transition group-hover:opacity-100">
+                            <span>Lihat struktur kepengurusan lengkap</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
+                <div class="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center hover:-translate-y-1 transition">
+                    <div class="text-3xl text-blue-600 mb-3"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="text-2xl font-extrabold text-slate-900">Latihan Rutin</div>
+                    <p class="text-slate-600 mt-2">Siapkan fisik dan mentalmu! Latihan setiap Selasa dan Kamis, mulai pukul 15.30 WIB hingga selesai.</p>
+                </div>
+                <div class="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center hover:-translate-y-1 transition">
+                    <div class="text-3xl text-emerald-600 mb-3"><i class="fa-solid fa-people-group"></i></div>
+                    <div class="text-2xl font-extrabold text-slate-900">Keluarga IBC</div>
+                    <p class="text-slate-600 mt-2">Lebih dari sekadar tim. Di sini kita tumbuh bersama, saling mendukung, dan merayakan setiap perkembangan.</p>
+                </div>
+                <div class="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center hover:-translate-y-1 transition">
+                    <div class="text-3xl text-amber-500 mb-3"><i class="fa-solid fa-handshake"></i></div>
+                    <div class="text-2xl font-extrabold text-slate-900">Fun &amp; Competitive</div>
+                    <p class="text-slate-600 mt-2">Serius dalam bertanding, santai dalam berkawan. Jaga sportivitas dan rasakan keseruan bermain bersama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program-kerja" class="scroll-mt-24 py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Program Kerja</h2>
+                <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">Agenda terencana untuk mengembangkan prestasi olahraga, memperkuat organisasi, dan menjaga regenerasi anggota IBC.</p>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 sm:gap-8">
+                <a href="turnamen_eksternal/turnamen_eksternal.html?return=%23program-kerja" class="block rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 sm:p-7">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-trophy"></i></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Turnamen Eksternal</h3>
+                    <p class="mt-3 min-h-12 leading-relaxed text-slate-600">Ajang kompetisi untuk mengasah kemampuan bertanding, memperluas pengalaman, dan membawa nama IBC di luar kampus.</p>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Lihat informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="pengukuhan/pengukuhan.html?return=%23program-kerja" class="block rounded-3xl border border-yellow-100 bg-gradient-to-br from-yellow-50 to-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2 sm:p-7">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-12 h-12 rounded-2xl bg-yellow-500 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Pengukuhan</h3>
+                    <p class="mt-3 min-h-12 leading-relaxed text-slate-600">Pengenalan dan pembinaan anggota baru untuk menumbuhkan karakter, rasa tanggung jawab, serta komitmen berorganisasi.</p>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Lihat informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="musyawarah_Anggota/musyawarah_Anggota.html?return=%23program-kerja" class="block rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-600 focus-visible:ring-offset-2 sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-xl sm:p-7 xl:col-span-1 xl:max-w-none">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-12 h-12 rounded-2xl bg-slate-700 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-people-group"></i></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Musyawarah Anggota</h3>
+                    <p class="mt-3 min-h-12 leading-relaxed text-slate-600">Forum evaluasi dan penyampaian aspirasi anggota untuk menentukan arah organisasi dan kepemimpinan periode berikutnya.</p>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Lihat informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kegiatan" class="scroll-mt-24 py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Kegiatan</h2>
+                <p class="mt-3 text-sm text-slate-600">Rangkaian kegiatan yang membangun kebersamaan dan keharmonisan</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+                <a href="bukber/bukber.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Bukber</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="gathering/gathering.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Gathering</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="latihan_rutin/latihan_rutin.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Latihan Rutin</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="persahabatan/persahabatan.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Persahabatan</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="sparing_rangking/sparing_rangking.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Sparing Ranking</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="turnamen_internal/turnamen_internal.html?return=%23kegiatan" class="block rounded-2xl border border-yellow-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Turnamen Internal</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="demo_unc/demo_unc.html?return=%23kegiatan" class="block rounded-2xl border border-blue-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Demo UNC</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="anniversarry/anniversarry.html?return=%23kegiatan" class="block rounded-2xl border border-yellow-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Anniversary IBC</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="endgrading/endgrading.html?return=%23kegiatan" class="block rounded-2xl border border-yellow-100 bg-white p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+                    <div class="flex items-center justify-between gap-3">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Endgrading</h3>
+                    </div>
+                    <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-600">Informasi & dokumentasi <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendaftaran" class="scroll-mt-24 py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <p class="text-sm uppercase tracking-[0.2em] text-blue-600 font-semibold mb-3">Jadwal Pendaftaran</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mulai perjalananmu bersama kami dalam 4 langkah sederhana.</h2>
+            </div>
+
+            <div id="registration-open" class="hidden mb-10 rounded-3xl border border-emerald-200 bg-emerald-50 p-6 sm:p-8 shadow-sm">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700">
+                            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Pendaftaran dibuka
+                        </div>
+                        <h3 class="mt-4 text-2xl font-bold text-slate-900">Siap bergabung dengan keluarga IBC?</h3>
+                        <p class="mt-2 text-slate-600">Lengkapi formulir pendaftaran sebelum waktu pendaftaran berakhir.</p>
+                    </div>
+                    <div class="rounded-2xl bg-white px-5 py-4 text-center shadow-sm">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Ditutup dalam</p>
+                        <p id="registration-countdown" class="mt-1 text-2xl font-black text-emerald-700">-- hari --:--:--</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-emerald-100 bg-white p-5 sm:flex-row sm:items-center sm:p-6">
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-900">Formulir Pendaftaran Anggota</h4>
+                        <p class="mt-1 text-sm text-slate-500">Pendaftaran dilakukan melalui Google Form resmi UKM IBC.</p>
+                    </div>
+                    <a href="https://forms.gle/YDPu7SjbzVjGaeqj6" target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-bold text-white shadow-lg shadow-emerald-600/20 transition hover:bg-emerald-700">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Google Form Pendaftaran
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div class="relative p-8 rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="absolute top-5 right-5 text-5xl font-black text-blue-100">01</div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-feather-pointed" aria-label="Shuttlecock"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Latihan</h3>
+                    <p class="text-slate-600">Ikut sesi latihan rutin dengan rajin dan antusias bersama teman-teman.</p>
+                </div>
+
+                <div class="relative p-8 rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="absolute top-5 right-5 text-5xl font-black text-blue-100">02</div>
+                    <div class="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Daftar</h3>
+                    <p class="text-slate-600">Isi formulir dengan jujur dan lengkap sesuai data diri yang benar.</p>
+                </div>
+
+                <div class="relative p-8 rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="absolute top-5 right-5 text-5xl font-black text-blue-100">03</div>
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500 text-white flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-star"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pengukuhan</h3>
+                    <p class="text-slate-600">Mengikuti dan berpartisipasi dalam kegiatan dengan penuh semangat.</p>
+                </div>
+
+                <div class="relative p-8 rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="absolute top-5 right-5 text-5xl font-black text-blue-100">04</div>
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500 text-white flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-user-check"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Aktif</h3>
+                    <p class="text-slate-600">Menjadi anggota yang aktif dalam keanggotaan dan kegiatan organisasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="relative py-24 overflow-hidden cta-gradient text-white">
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight">Satu Lapangan, Satu Keluarga</h2>
+            <p class="mt-6 text-lg text-slate-200 max-w-2xl mx-auto">Bergabunglah dengan keluarga IBC untuk berlatih badminton, membangun karakter, dan meraih prestasi bersama.</p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pendaftaran" class="px-8 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold shadow-lg shadow-amber-400/30 transition">Daftar Anggota</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+    <footer id="detail-contact" class="bg-[#05070b] text-white pt-16 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-4 mb-5">
+                        <img src="Image/Logo/Organisasi/LOGO_IBC.webp" alt="Logo UKM IBC" class="w-14 h-14 rounded-full object-cover border border-white/20 shadow-lg shadow-blue-500/15" />
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[0.25em] text-blue-300 font-semibold">UKM IBC</p>
+                            <h3 class="font-bold text-2xl tracking-tight">IKOPIN BADMINTON CLUB</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-md leading-relaxed">
+                        Unit Kegiatan Mahasiswa IKOPIN BADMINTON CLUB yang memiliki semangat sportivitas, disiplin dan kebersamaan dalam pengembangan keorganisasian di UKM IBC.
+                    </p>
+                    <div class="mt-6 flex items-center gap-3">
+                        <a href="https://admisi.ikopin.ac.id/" target="_blank" rel="noopener noreferrer" aria-label="Buka website IKOPIN" class="inline-flex items-center gap-3 hover:opacity-90 transition">
+                            <img src="Image/Logo/Kampus/LOGO_IKOPIN.webp" alt="Logo Kampus IKOPIN" class="w-12 h-12 rounded-full object-cover border border-white/20" />
+                            <span class="text-sm text-slate-300">Kampus IKOPIN</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-5 text-white">Navigasi</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li><a href="#profil" class="hover:text-blue-300 transition">Profil</a></li>
+                        <li><a href="#kegiatan" class="hover:text-blue-300 transition">Kegiatan</a></li>
+                        <li><a href="pengurus/pengurus.html?return=%23management-photo" class="hover:text-blue-300 transition">Struktur</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-5 text-white">Informasi</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>Jadwal latihan: Selasa dan Kamis, mulai pukul 15.30 WIB hingga selesai</li>
+                        <li>Lokasi latihan: Gedung Graha Suhardani</li>
+                        <li>Fokus: Bulutangkis dan organisasi</li>
+                        <li><a href="https://admisi.ikopin.ac.id/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition">Pendaftaran mahasiswa baru IKOPIN</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-5 text-white">Kontak UKM</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>Sekretariat UKM: UKM Center</li>
+                        <li><a href="mailto:ikopinibc@gmail.com" class="hover:text-blue-300 transition">ikopinibc@gmail.com</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-5 text-white">Media Sosial</h4>
+                    <div class="flex flex-col gap-3 text-sm text-slate-300">
+                        <a href="https://www.instagram.com/ibcikopin" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition flex items-center gap-2"><i class="fa-brands fa-instagram"></i> Instagram Organisasi</a>
+                        <a href="https://www.instagram.com/turnamenibc_ikopin" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition flex items-center gap-2"><i class="fa-brands fa-instagram"></i> Instagram Turnamen</a>
+                        <a href="https://www.tiktok.com/@ibc.ikopin" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition flex items-center gap-2"><i class="fa-brands fa-tiktok"></i> TikTok Organisasi</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+                <p>&copy; <span class="current-year">2026</span> UKM IKOPIN BADMINTON CLUB. Hak cipta dilindungi.</p>
+                <div class="flex items-center gap-5">
+                    <a href="https://maps.google.com/?q=Gedung+Graha+Suhardani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-white">
+                        <i class="fa-solid fa-location-dot text-blue-300"></i> Gedung Graha Suhardani
+                    </a>
+                    <span class="inline-flex items-center gap-2">SMASH SMASH SMASH JUARAAA</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+</div>
+</body>
+</html>
