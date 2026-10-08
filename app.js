@@ -1,3 +1,26 @@
+function supportsFlexGap() {
+    const flex = document.createElement('div');
+    const firstChild = document.createElement('div');
+    const secondChild = document.createElement('div');
+    flex.style.display = 'flex';
+    flex.style.flexDirection = 'column';
+    flex.style.rowGap = '1px';
+    flex.style.position = 'absolute';
+    flex.style.visibility = 'hidden';
+    firstChild.style.height = '1px';
+    secondChild.style.height = '1px';
+    flex.appendChild(firstChild);
+    flex.appendChild(secondChild);
+    document.body.appendChild(flex);
+    const supported = flex.scrollHeight === 3;
+    flex.parentNode.removeChild(flex);
+    return supported;
+}
+
+if (!supportsFlexGap()) {
+    document.documentElement.classList.add('no-flex-gap');
+}
+
 if (document.getElementById('home-page')) {
 const btn = document.getElementById('mobile-menu-btn');
 const menu = document.getElementById('mobile-menu');
@@ -561,12 +584,13 @@ if (document.getElementById('detail-content')) {
       const container = document.getElementById('detail-content');
       container.innerHTML = '';
 
-      const selectedItem = itemInformationMap[key]?.[itemKey];
+      const sectionItems = itemInformationMap[key];
+      const selectedItem = sectionItems && sectionItems[itemKey];
       if ((key === 'program' || key === 'kegiatan') && !selectedItem) {
         throw new Error(`Unsupported detail item: ${key}/${itemKey || '(missing)'}`);
       }
       const items = selectedItem ? [selectedItem] : data.items;
-      document.title = `${selectedItem?.title || data.title.replace(/\n/g, ' ')} | UKM IBC`;
+      document.title = `${(selectedItem && selectedItem.title) || data.title.replace(/\n/g, ' ')} | UKM IBC`;
 
       items.forEach((item) => {
         if (item.type === 'list') {
@@ -620,14 +644,21 @@ if (document.getElementById('detail-content')) {
               const card = document.createElement('article');
               card.id = `position-${positionSlug}`;
               card.className = 'group scroll-mt-24 overflow-hidden rounded-2xl border border-blue-100 bg-slate-50';
-              const imageSrc = structureImageMap[group.title]?.[position] || 'Image/Logo/Organisasi/LOGO_IBC.webp';
-              const member = structureMemberMap[group.title]?.[position] || { name: 'Nama Lengkap', cohort: '-' };
+              const groupImages = structureImageMap[group.title];
+              const groupMembers = structureMemberMap[group.title];
+              const imageSrc = (groupImages && groupImages[position]) || 'Image/Logo/Organisasi/LOGO_IBC.webp';
+              const member = (groupMembers && groupMembers[position]) || { name: 'Nama Lengkap', cohort: '-' };
+              const imageUrl = `${pageRoot}${imageSrc}`;
+              const fallbackImageUrl = imageUrl.replace(/\.webp(?=$|[?#])/i, '.jpg');
               const divisionName = group.title.replace(/^Divisi\s+/, '');
               const displayPosition = group.title.startsWith('Divisi ')
                 ? (position === 'Koordinator' ? `Koordinator Divisi ${divisionName}` : `Anggota ${divisionName}`)
                 : position;
               card.innerHTML = `
-                <img src="${pageRoot}${imageSrc}" alt="Foto ${displayPosition} UKM IBC" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover transition duration-700 ease-in-out will-change-transform group-hover:scale-105">
+                <picture class="responsive-picture w-full">
+                  <source srcset="${imageUrl}" type="image/webp">
+                  <img src="${fallbackImageUrl}" alt="Foto ${displayPosition} UKM IBC" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover transition duration-700 ease-in-out will-change-transform group-hover:scale-105">
+                </picture>
                 <div class="p-4">
                   <h4 class="font-bold text-slate-900">${member.name}</h4>
                   <p class="mt-1 text-sm font-semibold text-blue-600">${displayPosition}</p>
@@ -644,7 +675,8 @@ if (document.getElementById('detail-content')) {
         }
       });
 
-      const documentation = documentationMap[key]?.[itemKey];
+      const sectionDocumentation = documentationMap[key];
+      const documentation = sectionDocumentation && sectionDocumentation[itemKey];
       if (documentation) {
         const isTurnamenGallery = key === 'program' && itemKey === 'turnamen';
         const galleries = documentation.galleries || [documentation];
@@ -671,8 +703,16 @@ if (document.getElementById('detail-content')) {
               const isTurnamenFeatured = isTurnamenGallery && src.endsWith('/WhatsApp Image 2026-09-27 at 20.09.20.jpeg');
               const imgWrap = document.createElement('div');
               imgWrap.className = `documentation-gallery-card group overflow-hidden rounded-2xl border border-slate-200${isTurnamenGallery ? ' turnamen-scroll-card' : ''}${isTurnamenFeatured ? ' turnamen-featured-image' : ''}`;
+              const imageUrl = `${pageRoot}${src.replace(/\.(?:jpe?g)$/i, '.webp')}`;
+              const fallbackImageUrl = imageUrl.replace(/\.webp(?=$|[?#])/i, '.jpg');
+              const picture = document.createElement('picture');
+              picture.className = 'responsive-picture w-full';
+              const source = document.createElement('source');
+              source.srcset = imageUrl.replace(/ /g, '%20');
+              source.type = 'image/webp';
+              picture.appendChild(source);
               const img = document.createElement('img');
-              img.src = `${pageRoot}${src.replace(/\.(?:jpe?g)$/i, '.webp')}`;
+              img.src = fallbackImageUrl;
               img.alt = `${gallery.title} ${index + 1}`;
               img.loading = 'lazy';
               img.decoding = 'async';
@@ -684,7 +724,8 @@ if (document.getElementById('detail-content')) {
               if (src.endsWith('/IMG-20260720-WA0103.webp')) {
                 img.style.objectPosition = 'center 70%';
               }
-              imgWrap.appendChild(img);
+              picture.appendChild(img);
+              imgWrap.appendChild(picture);
               grid.appendChild(imgWrap);
             });
 

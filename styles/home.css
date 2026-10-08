@@ -10,7 +10,8 @@ body {
 
 #hero-left-photo {
     width: 54%;
-    background-image: url('../Image/Background/Kiri.webp');
+    background-image: url('../Image/Background/Kiri.jpg');
+    background-image: image-set(url('../Image/Background/Kiri.webp') type('image/webp') 1x, url('../Image/Background/Kiri.jpg') type('image/jpeg') 1x);
     background-position: 38% center;
     opacity: 0.56;
     -webkit-mask-image: linear-gradient(to right, #000 0%, #000 50%, rgba(0, 0, 0, 0.5) 76%, transparent 100%);
@@ -29,7 +30,8 @@ body {
 #hero-photo {
     left: auto;
     width: 64%;
-    background-image: url('../Image/Background/pagess.webp');
+    background-image: url('../Image/Background/pagess.jpg');
+    background-image: image-set(url('../Image/Background/pagess.webp') type('image/webp') 1x, url('../Image/Background/pagess.jpg') type('image/jpeg') 1x);
     background-position: 66% center;
     opacity: 0.9;
     transform: scale(1.01);
@@ -179,6 +181,22 @@ body.page-load #hero-photo { animation: hero-image-in-dim 1.2s ease-out both; }
     *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    body.page-load #home-page > nav,
+    body.page-load #home-page > main > section,
+    body.page-load #home-page > footer,
+    body.page-load #home-page section > div > *,
+    body.page-load #home-page footer > div > * {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    body.page-load #hero-photo {
+        -webkit-animation: none;
+        animation: none;
     }
 }
 

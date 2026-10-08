@@ -11,7 +11,118 @@ body {
 }
 
 img {
+    display: block;
     max-width: 100%;
+    height: auto;
+}
+
+picture.responsive-picture {
+    display: block;
+}
+
+.flex > *,
+.grid > * {
+    min-width: 0;
+}
+
+html.no-flex-gap .flex.gap-2:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-2 > * + * {
+    margin-left: 0.5rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+html.no-flex-gap .flex.gap-3:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-3 > * + * {
+    margin-left: 0.75rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-3 > * + * {
+    margin-top: 0.75rem;
+}
+
+html.no-flex-gap .flex.gap-4:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-4 > * + * {
+    margin-left: 1rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-4 > * + * {
+    margin-top: 1rem;
+}
+
+html.no-flex-gap .flex.gap-5:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-5 > * + * {
+    margin-left: 1.25rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-5 > * + * {
+    margin-top: 1.25rem;
+}
+
+html.no-flex-gap .flex.gap-6:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-6 > * + * {
+    margin-left: 1.5rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-6 > * + * {
+    margin-top: 1.5rem;
+}
+
+html.no-flex-gap .flex.gap-8:not(.flex-col) > * + *,
+html.no-flex-gap .inline-flex.gap-8 > * + * {
+    margin-left: 2rem;
+}
+
+html.no-flex-gap .flex.flex-col.gap-8 > * + * {
+    margin-top: 2rem;
+}
+
+html.no-flex-gap .flex.flex-wrap.gap-6 {
+    margin-right: -0.75rem;
+    margin-bottom: -0.75rem;
+    margin-left: -0.75rem;
+}
+
+html.no-flex-gap .flex.flex-wrap.gap-6 > * {
+    margin: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-2 > * + *,
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-4 > * + *,
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-8 > * + * {
+        margin-top: 0;
+    }
+
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-2 > * + *,
+    html.no-flex-gap .flex[class~="sm:gap-2"] > * + *,
+    html.no-flex-gap .inline-flex[class~="sm:gap-2"] > * + * {
+        margin-left: 0.5rem;
+    }
+
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-4 > * + * {
+        margin-left: 1rem;
+    }
+
+    html.no-flex-gap .flex[class~="sm:flex-row"].gap-8 > * + * {
+        margin-left: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    html.no-flex-gap .flex[class~="md:flex-row"].gap-4 > * + * {
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    html.no-flex-gap .flex[class~="lg:flex-row"].gap-6 > * + * {
+        margin-top: 0;
+        margin-left: 1.5rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

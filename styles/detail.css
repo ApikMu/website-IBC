@@ -8,8 +8,8 @@ body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab30
     }
 
     @keyframes detail-page-image-in {
-      from { opacity: 0; scale: 1.03; }
-      to { opacity: 1; scale: 1; }
+      from { opacity: 0; transform: scale(1.03); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     body.detail-page > nav,
@@ -85,5 +85,17 @@ body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab30
       *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+      }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      body.detail-page > nav,
+      body.detail-page main > section,
+      body.detail-page > footer,
+      body.detail-page footer > div > *,
+      body.detail-page #detail-content > *,
+      body.detail-page img {
+        -webkit-animation: none;
+        animation: none;
       }
     }

@@ -12,13 +12,21 @@ const publicFiles = [
   'style.css',
   'app.js',
   'Image/Background/Kiri.webp',
+  'Image/Background/Kiri.jpg',
   'Image/Background/pagess.webp',
+  'Image/Background/pagess.jpg',
   'Image/Background/UMB.webp',
+  'Image/Background/UMB.jpg',
   'Image/Background/Unla.webp',
+  'Image/Background/Unla.jpg',
   'Image/Logo/Kampus/LOGO_IKOPIN.webp',
+  'Image/Logo/Kampus/LOGO_IKOPIN.jpg',
   'Image/Logo/Organisasi/LOGO_IBC.webp',
+  'Image/Logo/Organisasi/LOGO_IBC.jpg',
   'Image/Tampilan/PENGURUS.webp',
+  'Image/Tampilan/PENGURUS.jpg',
   'Image/Tampilan/RAKER.webp',
+  'Image/Tampilan/RAKER.jpg',
 ];
 
 const pageDirectories = [
