@@ -16,6 +16,7 @@ Perintah build mengompilasi Tailwind CSS dan menyalin halaman beserta aset yang
 digunakan ke `dist/`. Untuk hosting statis, unggah isi folder `dist/` sebagai
 folder publik situs. Folder lingkungan Python, dependensi, dan berkas sumber
 build tidak disertakan.
+Konfigurasi Vercel di `vercel.json` menetapkan `dist` sebagai output directory.
 
 Situs menggunakan `index.html` sebagai halaman induk dan 14 subfolder sebagai
 halaman anak. Setiap subfolder berisi HTML serta CSS bernama sama; CSS anak
@@ -96,3 +97,7 @@ Image/
 ├── Struktur/
 └── Tampilan/
 ```
+
+Foto tersedia dalam WebP dengan versi JPEG fallback berukuran maksimal 2560 px
+untuk browser lama. Halaman menggunakan elemen `<picture>` agar browser yang
+mendukung WebP tetap mengunduh format yang lebih ringan.
