@@ -1,5 +1,15 @@
 body.detail-page { background: #f4fbf7; }
 body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab308); }
+body.detail-page #page-header > .flex > .responsive-picture {
+  flex: 0 0 4rem;
+}
+
+body.detail-page #page-header > .flex > .responsive-picture img {
+  width: 4rem;
+  height: 4rem;
+  max-width: none;
+  object-fit: cover;
+}
     .doc-card { background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(236,253,245,0.88)); }
 
     @keyframes detail-page-fade-up {

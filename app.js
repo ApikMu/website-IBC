@@ -746,7 +746,7 @@ if (document.getElementById('detail-content')) {
     });
     const returnHash = params.get('return') || '#home';
 
-    document.querySelectorAll('a[href="index.html"]').forEach((link) => {
+    document.querySelectorAll('a[href$="index.html"]').forEach((link) => {
       link.href = `${pageRoot}index.html${returnHash}`;
     });
 
