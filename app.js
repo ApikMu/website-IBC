@@ -744,7 +744,7 @@ if (document.getElementById('detail-content')) {
     document.querySelectorAll('.current-year').forEach((element) => {
       element.textContent = String(new Date().getFullYear());
     });
-    const returnHash = params.get('return') || '#home';
+    const returnHash = '#home';
 
     document.querySelectorAll('a[href$="index.html"]').forEach((link) => {
       link.href = `${pageRoot}index.html${returnHash}`;
