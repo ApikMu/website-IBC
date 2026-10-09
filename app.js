@@ -22,6 +22,36 @@ if (!supportsFlexGap()) {
 }
 
 if (document.getElementById('home-page')) {
+const returnPosition = new URLSearchParams(window.location.search).get('returnY');
+if (returnPosition !== null && /^\d+$/.test(returnPosition)) {
+    const returnY = Number(returnPosition);
+    const cleanUrl = `${window.location.pathname}${window.location.hash}`;
+    window.history.replaceState(null, '', cleanUrl);
+    window.addEventListener('load', () => {
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, returnY);
+        window.requestAnimationFrame(() => {
+            document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        });
+    }, { once: true });
+}
+
+document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+    }
+
+    const targetUrl = new URL(link.href, window.location.href);
+    if (targetUrl.origin !== window.location.origin || !targetUrl.pathname.endsWith('.html')) {
+        return;
+    }
+
+    targetUrl.searchParams.set('returnY', String(Math.round(window.scrollY)));
+    link.href = targetUrl.href;
+});
+
 const btn = document.getElementById('mobile-menu-btn');
 const menu = document.getElementById('mobile-menu');
 const icon = btn.querySelector('i');
@@ -175,6 +205,20 @@ if (canUseHeroPointerEffect.matches) {
         document.getElementById('hero-left-photo').style.removeProperty('translate');
     });
 }
+}
+
+if (document.body.classList.contains('registration-page')) {
+    const returnY = new URLSearchParams(window.location.search).get('returnY');
+    const returnUrl = new URL('../index.html', window.location.href);
+    if (returnY !== null && /^\d+$/.test(returnY)) {
+        returnUrl.searchParams.set('returnY', returnY);
+    } else {
+        returnUrl.hash = 'home';
+    }
+
+    document.querySelectorAll('a[href*="index.html"]').forEach((link) => {
+        link.href = returnUrl.href;
+    });
 }
 
 if (document.getElementById('detail-content')) {
@@ -744,10 +788,16 @@ if (document.getElementById('detail-content')) {
     document.querySelectorAll('.current-year').forEach((element) => {
       element.textContent = String(new Date().getFullYear());
     });
-    const returnHash = '#home';
+    const returnY = params.get('returnY');
+    const returnUrl = new URL(`${pageRoot}index.html`, window.location.href);
+    if (returnY !== null && /^\d+$/.test(returnY)) {
+      returnUrl.searchParams.set('returnY', returnY);
+    } else {
+      returnUrl.hash = 'home';
+    }
 
-    document.querySelectorAll('a[href$="index.html"]').forEach((link) => {
-      link.href = `${pageRoot}index.html${returnHash}`;
+    document.querySelectorAll('body.detail-page nav a[href*="index.html"]').forEach((link) => {
+      link.href = returnUrl.href;
     });
 
     const key = section;
