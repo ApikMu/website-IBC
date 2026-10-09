@@ -1,14 +1,33 @@
 body.detail-page { background: #f4fbf7; }
 body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab308); }
 body.detail-page #page-header > .flex > .responsive-picture {
-  flex: 0 0 4rem;
+  display: flex;
+  flex: 0 0 3rem;
+  width: 3rem;
+  height: 3rem;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #fff;
+  padding: 0.25rem;
 }
 
 body.detail-page #page-header > .flex > .responsive-picture img {
-  width: 4rem;
-  height: 4rem;
-  max-width: none;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 9999px;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  body.detail-page #page-header > .flex > .responsive-picture {
+    flex-basis: 4rem;
+    width: 4rem;
+    height: 4rem;
+  }
 }
     .doc-card { background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(236,253,245,0.88)); }
 
