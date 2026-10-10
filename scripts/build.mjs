@@ -7,6 +7,7 @@ const outputDirectory = join(projectRoot, 'dist');
 
 const publicFiles = [
   'index.html',
+  'Image/Logo/favicon.webp',
   'Image/Logo/favicon.jpg',
   'assets/css/site.css',
   'style.css',
