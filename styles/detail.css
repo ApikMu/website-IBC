@@ -1,6 +1,6 @@
 body.detail-page { background: #f4fbf7; }
 body.detail-page #page-header { border-bottom-color: var(--detail-accent, #eab308); }
-body.detail-page #page-header > .flex > .responsive-picture {
+body.detail-page #page-header .flex > .responsive-picture {
   display: none;
 }
     .doc-card { background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(236,253,245,0.88)); }
@@ -43,8 +43,15 @@ body.detail-page #page-header > .flex > .responsive-picture {
     }
 
     .documentation-gallery-image {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 16 / 9;
       transition: transform 500ms ease, filter 500ms ease;
+    }
+
+    @media (min-width: 1024px) {
+      .structure-member-grid,
+      .documentation-gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     .documentation-gallery-card {
@@ -63,10 +70,6 @@ body.detail-page #page-header > .flex > .responsive-picture {
 
     .turnamen-featured-image {
       grid-column: 1 / -1;
-    }
-
-    .turnamen-featured-photo {
-      aspect-ratio: 4160 / 1986;
     }
 
     .turnamen-banner-focus {

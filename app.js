@@ -1,3 +1,16 @@
+window.addEventListener('pageshow', (event) => {
+    if (!event.persisted) {
+        return;
+    }
+
+    const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    window.requestAnimationFrame(() => {
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+    });
+});
+
 function supportsFlexGap() {
     const flex = document.createElement('div');
     const firstChild = document.createElement('div');
@@ -791,7 +804,7 @@ if (document.getElementById('detail-content')) {
             title.textContent = group.title;
 
             const grid = document.createElement('div');
-            grid.className = 'grid sm:grid-cols-2 lg:grid-cols-3 gap-4';
+            grid.className = 'structure-member-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
             group.positions.forEach((position) => {
               const positionSlug = position
@@ -815,7 +828,7 @@ if (document.getElementById('detail-content')) {
               card.innerHTML = `
                 <picture class="responsive-picture w-full">
                   <source srcset="${imageUrl}" type="image/webp">
-                  <img src="${fallbackImageUrl}" alt="Foto ${displayPosition} UKM IBC" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover transition duration-700 ease-in-out will-change-transform group-hover:scale-105">
+                  <img src="${fallbackImageUrl}" alt="Foto ${displayPosition} UKM IBC" loading="lazy" decoding="async" class="aspect-square w-full object-cover transition duration-700 ease-in-out will-change-transform group-hover:scale-105">
                 </picture>
                 <div class="p-4">
                   <h4 class="font-bold text-slate-900">${member.name}</h4>
@@ -855,14 +868,14 @@ if (document.getElementById('detail-content')) {
             wrap.appendChild(emptyMessage);
           } else {
             const grid = document.createElement('div');
-            grid.className = 'documentation-gallery-grid grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4';
+            grid.className = 'documentation-gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
             gallery.images.forEach((src, index) => {
               const isTurnamenFeatured = isTurnamenGallery && src.endsWith('/WhatsApp Image 2026-09-27 at 20.09.20.jpeg');
               const imgWrap = document.createElement('div');
               imgWrap.className = `documentation-gallery-card group overflow-hidden rounded-2xl border border-slate-200${isTurnamenGallery ? ' turnamen-scroll-card' : ''}${isTurnamenFeatured ? ' turnamen-featured-image' : ''}`;
               const imageUrl = `${pageRoot}${src.replace(/\.(?:jpe?g)$/i, '.webp')}`;
-              const fallbackImageUrl = imageUrl.replace(/\.webp(?=$|[?#])/i, '.jpg');
+              const fallbackImageUrl = `${pageRoot}${/\.(?:jpe?g)$/i.test(src) ? src : src.replace(/\.webp(?=$|[?#])/i, '.jpg')}`;
               const picture = document.createElement('picture');
               picture.className = 'responsive-picture w-full';
               const source = document.createElement('source');
@@ -875,7 +888,7 @@ if (document.getElementById('detail-content')) {
               img.loading = 'lazy';
               img.decoding = 'async';
               const isTurnamenBanner = isTurnamenGallery && index === 0;
-              img.className = `documentation-gallery-image w-full ${isTurnamenFeatured ? 'turnamen-featured-photo object-contain' : `object-cover ${isTurnamenBanner ? 'turnamen-banner-focus' : ''}`}`;
+              img.className = `documentation-gallery-image aspect-video w-full object-cover ${isTurnamenBanner ? 'turnamen-banner-focus' : ''}`;
               if (key === 'kegiatan' && itemKey === 'sparing' && (index === 1 || index === 2)) {
                 img.style.objectPosition = 'center 40%';
               }

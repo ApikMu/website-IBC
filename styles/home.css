@@ -45,6 +45,10 @@ body {
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.12) 14%, rgba(0, 0, 0, 0.58) 34%, #000 54%, #000 100%);
 }
 
+#foto-pengurus img {
+    aspect-ratio: 16 / 9;
+}
+
 #hero-photo::before {
     content: '';
     position: absolute;
