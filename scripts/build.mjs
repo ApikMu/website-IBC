@@ -1,4 +1,4 @@
-import { cp, copyFile, mkdir, rm } from 'node:fs/promises';
+import { access, cp, copyFile, mkdir, rm } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -7,7 +7,7 @@ const outputDirectory = join(projectRoot, 'dist');
 
 const publicFiles = [
   'index.html',
-  'Image/Logo/favicon.png',
+  'Image/Logo/favicon.jpg',
   'assets/css/site.css',
   'style.css',
   'app.js',
@@ -52,6 +52,10 @@ const publicDirectories = [
   'styles',
   ...pageDirectories,
 ];
+
+for (const input of [...publicFiles, ...publicDirectories]) {
+  await access(join(projectRoot, input));
+}
 
 await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(outputDirectory, { recursive: true });
