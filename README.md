@@ -1,4 +1,4 @@
-# IKOPIN BADMINTON CLUB
+# IKOPIN Badminton Club
 
 Situs statis UKM IKOPIN Badminton Club. Berkas sumber tetap berada di folder
 proyek; hasil untuk dipublikasikan dibuat terpisah di `dist/`.
