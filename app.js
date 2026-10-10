@@ -21,6 +21,22 @@ if (!supportsFlexGap()) {
     document.documentElement.classList.add('no-flex-gap');
 }
 
+function createHomeReturnUrl(pageRoot, params) {
+    const returnUrl = new URL(`${pageRoot}index.html`, window.location.href);
+    const returnY = params.get('returnY');
+    const returnTarget = params.get('return');
+
+    if (returnY !== null && /^\d+$/.test(returnY)) {
+        returnUrl.searchParams.set('returnY', returnY);
+    }
+
+    returnUrl.hash = returnTarget && returnTarget.startsWith('#')
+        ? returnTarget.slice(1)
+        : 'home';
+
+    return returnUrl;
+}
+
 if (document.getElementById('home-page')) {
 const returnPosition = new URLSearchParams(window.location.search).get('returnY');
 if (returnPosition !== null && /^\d+$/.test(returnPosition)) {
@@ -312,13 +328,7 @@ if (canUseHeroPointerEffect.matches) {
 }
 
 if (document.body.classList.contains('registration-page')) {
-    const returnY = new URLSearchParams(window.location.search).get('returnY');
-    const returnUrl = new URL('../index.html', window.location.href);
-    if (returnY !== null && /^\d+$/.test(returnY)) {
-        returnUrl.searchParams.set('returnY', returnY);
-    } else {
-        returnUrl.hash = 'home';
-    }
+    const returnUrl = createHomeReturnUrl('../', new URLSearchParams(window.location.search));
 
     document.querySelectorAll('a[href*="index.html"]').forEach((link) => {
         link.href = returnUrl.href;
@@ -892,13 +902,7 @@ if (document.getElementById('detail-content')) {
     document.querySelectorAll('.current-year').forEach((element) => {
       element.textContent = String(new Date().getFullYear());
     });
-    const returnY = params.get('returnY');
-    const returnUrl = new URL(`${pageRoot}index.html`, window.location.href);
-    if (returnY !== null && /^\d+$/.test(returnY)) {
-      returnUrl.searchParams.set('returnY', returnY);
-    } else {
-      returnUrl.hash = 'home';
-    }
+    const returnUrl = createHomeReturnUrl(pageRoot, params);
 
     document.querySelectorAll('body.detail-page nav a[href*="index.html"]').forEach((link) => {
       link.href = returnUrl.href;
