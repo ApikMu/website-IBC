@@ -177,13 +177,36 @@ function scrollToCurrentHash() {
         hashNavigationFrame = 0;
         const target = document.getElementById(window.location.hash.slice(1));
         if (target) {
-            target.scrollIntoView({
+            const scrollMarginTop = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+            const top = window.scrollY + target.getBoundingClientRect().top - scrollMarginTop;
+            window.scrollTo({
+                top,
                 behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
-                block: 'start'
             });
         }
     });
 }
+
+document.querySelectorAll('#home a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+            return;
+        }
+
+        const targetId = new URL(link.href, window.location.href).hash.slice(1);
+        const target = document.getElementById(targetId);
+        if (!target || target.tagName !== 'SECTION') {
+            return;
+        }
+
+        event.preventDefault();
+        const nextHash = `#${targetId}`;
+        if (window.location.hash !== nextHash) {
+            window.history.pushState(null, '', nextHash);
+        }
+        scrollToCurrentHash();
+    });
+});
 
 navbarLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
