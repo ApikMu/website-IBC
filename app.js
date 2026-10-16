@@ -1,15 +1,6 @@
-window.addEventListener('pageshow', (event) => {
-    if (!event.persisted) {
-        return;
-    }
-
-    const previousScrollBehavior = document.documentElement.style.scrollBehavior;
-    document.documentElement.style.scrollBehavior = 'auto';
-    window.scrollTo(0, 0);
-    window.requestAnimationFrame(() => {
-        document.documentElement.style.scrollBehavior = previousScrollBehavior;
-    });
-});
+if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'auto';
+}
 
 function supportsFlexGap() {
     const flex = document.createElement('div');
@@ -50,12 +41,70 @@ function createHomeReturnUrl(pageRoot, params) {
     return returnUrl;
 }
 
+function getSavedScrollPosition() {
+    const state = window.history.state;
+    if (!state || typeof state !== 'object' || !Number.isFinite(state.scrollY)) {
+        return null;
+    }
+    return Math.max(0, state.scrollY);
+}
+
+function saveCurrentScrollPosition() {
+    const currentState = window.history.state;
+    const state = currentState && typeof currentState === 'object'
+        ? currentState
+        : {};
+    window.history.replaceState(
+        { ...state, scrollY: Math.round(window.scrollY) },
+        '',
+        window.location.href,
+    );
+}
+
+function restoreSavedScrollPosition() {
+    const scrollY = getSavedScrollPosition();
+    if (scrollY === null) {
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, scrollY);
+        window.requestAnimationFrame(() => {
+            document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        });
+    });
+}
+
+function getRegistrationDates() {
+    return {
+        openingDate: new Date(2026, 9, 19),
+        closingDate: new Date(2026, 10, 19),
+    };
+}
+
+function formatRegistrationCountdown(remaining) {
+    const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${days} hari ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
 if (document.getElementById('home-page')) {
+window.addEventListener('pageshow', restoreSavedScrollPosition);
+
 const returnPosition = new URLSearchParams(window.location.search).get('returnY');
 if (returnPosition !== null && /^\d+$/.test(returnPosition)) {
     const returnY = Number(returnPosition);
     const cleanUrl = `${window.location.pathname}${window.location.hash}`;
-    window.history.replaceState(null, '', cleanUrl);
+    const currentState = window.history.state;
+    const state = currentState && typeof currentState === 'object'
+        ? currentState
+        : {};
+    window.history.replaceState({ ...state, scrollY: returnY }, '', cleanUrl);
     window.addEventListener('load', () => {
         const previousScrollBehavior = document.documentElement.style.scrollBehavior;
         document.documentElement.style.scrollBehavior = 'auto';
@@ -77,6 +126,7 @@ document.addEventListener('click', (event) => {
         return;
     }
 
+    saveCurrentScrollPosition();
     targetUrl.searchParams.set('returnY', String(Math.round(window.scrollY)));
     link.href = targetUrl.href;
 });
@@ -234,9 +284,6 @@ navbarLinks.forEach((link) => {
     });
 });
 
-window.addEventListener('popstate', scrollToCurrentHash);
-window.addEventListener('hashchange', scrollToCurrentHash);
-
 if (navigationTargets.size > 0 && 'IntersectionObserver' in window) {
     const visibleTargets = new Set();
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -285,49 +332,31 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-const registrationFormUrl = 'https://forms.gle/pGhVnHGMBY9KDF3y5';
 const registrationOpenPanel = document.getElementById('registration-open');
 const registrationCountdown = document.getElementById('registration-countdown');
 
 function updateRegistrationState() {
     const now = new Date();
-    const year = now.getFullYear();
-    const openingDate = new Date(year, 9, 15);
-    const closingDate = new Date(year, 11, 1);
+    const { openingDate, closingDate } = getRegistrationDates();
     const isOpen = now >= openingDate && now < closingDate;
-    const target = isOpen ? registrationFormUrl : 'pendaftaran/pendaftaran.html';
+    const target = 'pendaftaran/pendaftaran.html';
 
     registrationOpenPanel.classList.toggle('hidden', !isOpen);
     document.querySelectorAll('[data-registration-link]').forEach((link) => {
         link.href = target;
-        if (isOpen) {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-        } else {
-            link.removeAttribute('target');
-            link.removeAttribute('rel');
-        }
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
     });
 
     if (isOpen) {
-        const remaining = closingDate - now;
-        const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-        registrationCountdown.textContent = `${days} hari ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        registrationCountdown.textContent = formatRegistrationCountdown(closingDate - now);
     }
 
-    const nextStateChange = isOpen
-        ? closingDate
-        : now < openingDate
-            ? openingDate
-            : new Date(year + 1, 9, 15);
-    const nextUpdate = isOpen
-        ? 1000
-        : Math.min(nextStateChange - now, 2147483647);
-    window.setTimeout(updateRegistrationState, Math.max(1000, nextUpdate));
+    if (now < openingDate) {
+        window.setTimeout(updateRegistrationState, openingDate - now);
+    } else if (isOpen) {
+        window.setTimeout(updateRegistrationState, 1000);
+    }
 }
 
 updateRegistrationState();
@@ -369,6 +398,31 @@ if (document.body.classList.contains('registration-page')) {
     document.querySelectorAll('a[href*="index.html"]').forEach((link) => {
         link.href = returnUrl.href;
     });
+
+    const closedPanel = document.getElementById('registration-closed');
+    const openPanel = document.getElementById('registration-open-page');
+
+    function updateRegistrationPage() {
+        const now = new Date();
+        const { openingDate, closingDate } = getRegistrationDates();
+        const isOpen = now >= openingDate && now < closingDate;
+
+        closedPanel.classList.toggle('hidden', isOpen);
+        openPanel.classList.toggle('hidden', !isOpen);
+
+        if (now < openingDate) {
+            window.setTimeout(updateRegistrationPage, openingDate - now);
+        } else if (isOpen) {
+            window.setTimeout(updateRegistrationPage, 1000);
+        }
+
+        if (isOpen) {
+            const countdown = document.getElementById('registration-page-countdown');
+            countdown.textContent = formatRegistrationCountdown(closingDate - now);
+        }
+    }
+
+    updateRegistrationPage();
 }
 
 if (document.getElementById('detail-content')) {
@@ -524,7 +578,11 @@ if (document.getElementById('detail-content')) {
             },
             {
               title: 'Persahabatan UNINUS',
-              images: []
+              images: [
+                'Image/Dokumentasi/KEGIATAN/Persahabatan/Uninus/1. IMG_2999.jpg',
+                'Image/Dokumentasi/KEGIATAN/Persahabatan/Uninus/2. IMG_2998.jpg',
+                'Image/Dokumentasi/KEGIATAN/Persahabatan/Uninus/3. IMG_3001.jpg'
+              ]
             }
           ]
         },
@@ -892,19 +950,27 @@ if (document.getElementById('detail-content')) {
           } else {
             const grid = document.createElement('div');
             grid.className = 'documentation-gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6';
+            if (key === 'kegiatan' && itemKey === 'persahabatan') {
+              grid.classList.add('friendship-gallery-grid');
+            }
 
             gallery.images.forEach((src, index) => {
               const isTurnamenFeatured = isTurnamenGallery && src.endsWith('/WhatsApp Image 2026-09-27 at 20.09.20.jpeg');
               const imgWrap = document.createElement('div');
               imgWrap.className = `documentation-gallery-card group overflow-hidden rounded-2xl border border-slate-200${isTurnamenGallery ? ' turnamen-scroll-card' : ''}${isTurnamenFeatured ? ' turnamen-featured-image' : ''}`;
-              const imageUrl = `${pageRoot}${src.replace(/\.(?:jpe?g)$/i, '.webp')}`;
+              if (key === 'kegiatan' && itemKey === 'persahabatan') {
+                imgWrap.classList.add('friendship-gallery-card');
+              }
+              const imageUrl = `${pageRoot}${gallery.webp === false ? src : src.replace(/\.(?:jpe?g)$/i, '.webp')}`;
               const fallbackImageUrl = `${pageRoot}${/\.(?:jpe?g)$/i.test(src) ? src : src.replace(/\.webp(?=$|[?#])/i, '.jpg')}`;
               const picture = document.createElement('picture');
               picture.className = 'responsive-picture w-full';
-              const source = document.createElement('source');
-              source.srcset = imageUrl.replace(/ /g, '%20');
-              source.type = 'image/webp';
-              picture.appendChild(source);
+              if (gallery.webp !== false) {
+                const source = document.createElement('source');
+                source.srcset = imageUrl.replace(/ /g, '%20');
+                source.type = 'image/webp';
+                picture.appendChild(source);
+              }
               const img = document.createElement('img');
               img.src = fallbackImageUrl;
               img.alt = `${gallery.title} ${index + 1}`;
@@ -912,8 +978,14 @@ if (document.getElementById('detail-content')) {
               img.decoding = 'async';
               const isTurnamenBanner = isTurnamenGallery && index === 0;
               img.className = `documentation-gallery-image aspect-video w-full object-cover ${isTurnamenBanner ? 'turnamen-banner-focus' : ''}`;
+              if (key === 'kegiatan' && itemKey === 'persahabatan' && gallery.title === 'Persahabatan UNINUS' && index === 1) {
+                img.classList.add('friendship-portrait-image');
+              }
               if (key === 'kegiatan' && itemKey === 'sparing' && (index === 1 || index === 2)) {
                 img.style.objectPosition = 'center 40%';
+              }
+              if (gallery.objectPositions && gallery.objectPositions[index]) {
+                img.style.objectPosition = gallery.objectPositions[index];
               }
               if (src.endsWith('/IMG-20260720-WA0103.webp')) {
                 img.style.objectPosition = 'center 70%';

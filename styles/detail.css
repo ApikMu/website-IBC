@@ -47,6 +47,34 @@ body.detail-page #page-header .flex > .responsive-picture {
       transition: transform 500ms ease, filter 500ms ease;
     }
 
+    .friendship-portrait-image {
+      aspect-ratio: 16 / 9;
+      object-position: center 48%;
+    }
+
+    .friendship-gallery-grid {
+      gap: 1.25rem;
+    }
+
+    .friendship-gallery-card {
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+    }
+
+    .documentation-gallery-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    @media (min-width: 640px) {
+      .documentation-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .friendship-gallery-grid {
+        gap: 1.5rem;
+      }
+    }
+
     @media (min-width: 1024px) {
       .structure-member-grid,
       .documentation-gallery-grid {
@@ -55,6 +83,8 @@ body.detail-page #page-header .flex > .responsive-picture {
     }
 
     .documentation-gallery-card {
+      align-self: start;
+      min-width: 0;
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
 
