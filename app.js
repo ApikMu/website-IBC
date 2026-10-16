@@ -339,22 +339,38 @@ function updateRegistrationState() {
     const now = new Date();
     const { openingDate, closingDate } = getRegistrationDates();
     const isOpen = now >= openingDate && now < closingDate;
+    const isUpcoming = now < openingDate;
+    const isRegistrationPeriod = now < closingDate;
     const target = 'pendaftaran/pendaftaran.html';
 
-    registrationOpenPanel.classList.toggle('hidden', !isOpen);
+    registrationOpenPanel.classList.toggle('hidden', !isRegistrationPeriod);
+    document.getElementById('registration-status-label').textContent = isUpcoming
+        ? 'Pendaftaran segera dibuka'
+        : 'Pendaftaran dibuka';
+    document.getElementById('registration-countdown-label').textContent = isUpcoming
+        ? 'Dibuka dalam'
+        : 'Ditutup dalam';
+    document.getElementById('registration-countdown-date').textContent =
+        (isUpcoming ? openingDate : closingDate).toLocaleDateString('id-ID', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+    document.getElementById('registration-form-card').classList.toggle('hidden', !isOpen);
     document.querySelectorAll('[data-registration-link]').forEach((link) => {
         link.href = target;
         link.removeAttribute('target');
         link.removeAttribute('rel');
     });
 
-    if (isOpen) {
-        registrationCountdown.textContent = formatRegistrationCountdown(closingDate - now);
+    if (isRegistrationPeriod) {
+        registrationCountdown.textContent = formatRegistrationCountdown(
+            (isUpcoming ? openingDate : closingDate) - now,
+        );
     }
 
-    if (now < openingDate) {
-        window.setTimeout(updateRegistrationState, openingDate - now);
-    } else if (isOpen) {
+    if (isRegistrationPeriod) {
         window.setTimeout(updateRegistrationState, 1000);
     }
 }
@@ -406,19 +422,31 @@ if (document.body.classList.contains('registration-page')) {
         const now = new Date();
         const { openingDate, closingDate } = getRegistrationDates();
         const isOpen = now >= openingDate && now < closingDate;
+        const isUpcoming = now < openingDate;
 
         closedPanel.classList.toggle('hidden', isOpen);
         openPanel.classList.toggle('hidden', !isOpen);
+        document.getElementById('registration-closed-status').textContent = isUpcoming
+            ? 'Pendaftaran Segera Dibuka'
+            : 'Pendaftaran Ditutup';
+        document.getElementById('registration-closed-title').textContent = isUpcoming
+            ? 'Pendaftaran segera dibuka'
+            : 'Sampai jumpa di pendaftaran berikutnya';
+        document.getElementById('registration-closed-countdown-card').classList.toggle(
+            'hidden',
+            !isUpcoming,
+        );
 
-        if (now < openingDate) {
-            window.setTimeout(updateRegistrationPage, openingDate - now);
-        } else if (isOpen) {
+        if (isUpcoming || isOpen) {
             window.setTimeout(updateRegistrationPage, 1000);
         }
 
         if (isOpen) {
             const countdown = document.getElementById('registration-page-countdown');
             countdown.textContent = formatRegistrationCountdown(closingDate - now);
+        } else if (isUpcoming) {
+            document.getElementById('registration-closed-countdown').textContent =
+                formatRegistrationCountdown(openingDate - now);
         }
     }
 

@@ -36,16 +36,26 @@
       <div id="registration-closed" class="relative z-10 flex flex-col gap-8 rounded-[1.5rem] border border-emerald-100/50 bg-emerald-950/55 p-5 backdrop-blur-[3px] sm:flex-row sm:items-start sm:justify-between sm:p-7">
         <div class="max-w-2xl">
           <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-900">
-            <i class="fa-solid fa-lock"></i> Pendaftaran Ditutup
+            <i class="fa-solid fa-lock"></i> <span id="registration-closed-status">Pendaftaran akan Segera Dibuka</span>
           </div>
-          <h1 class="mt-5 text-3xl font-extrabold leading-tight text-white sm:text-5xl">Sampai jumpa di pendaftaran berikutnya</h1>
-          <p class="mt-5 text-base leading-relaxed text-emerald-50 sm:text-lg">Pantau Instagram resmi IBC untuk mendapatkan informasi pendaftaran berikutnya.</p>
+          <h1 id="registration-closed-title" class="mt-5 text-3xl font-extrabold leading-tight text-white sm:text-5xl">Pendaftaran akan segera dibuka</h1>
+          <p class="mt-5 text-base leading-relaxed text-emerald-50 sm:text-lg">Satu langkah lagi buat jadi bagian dari UKM IBC! Penasaran kapan pendaftaran resminya dibuka? Pantau terus linimasa kami dan langsung isi formulirnya pas pendaftaran dibuka!</p>
         </div>
         <div class="flex shrink-0 flex-col gap-3">
           <a href="https://www.instagram.com/ibcikopin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition hover:bg-slate-700">
-            <i class="fa-brands fa-instagram"></i> Instagram IBC
+            <i class="fa-brands fa-instagram"></i> Instagram Kami
           </a>
         </div>
+        <section id="registration-closed-countdown-card" class="registration-countdown-card" aria-label="Waktu hingga pendaftaran dibuka">
+          <div class="registration-countdown-copy">
+            <span class="registration-countdown-indicator" aria-hidden="true"></span>
+            <div>
+              <p class="registration-countdown-label">Pendaftaran dibuka dalam</p>
+              <p class="registration-countdown-date">Senin, 19 Oktober 2026</p>
+            </div>
+          </div>
+          <p id="registration-closed-countdown" class="registration-countdown-value" role="timer" aria-live="off">-- hari --:--:--</p>
+        </section>
       </div>
 
       <div id="registration-open-page" class="registration-open-panel hidden">
@@ -53,15 +63,15 @@
             <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-900">
               <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> Pendaftaran Dibuka
             </div>
-            <h1 class="registration-open-title">Saatnya bergabung dengan keluarga IBC</h1>
-            <p class="registration-open-description">Pendaftaran anggota baru UKM IBC dibuka pada 19 Oktober hingga 19 November 2026. Kenali kegiatan kami dan lengkapi formulir untuk memulai perjalananmu bersama IBC.</p>
+            <h1 class="registration-open-title">Saatnya bergabung dengan keluarga besar IBC</h1>
+            <p class="registration-open-description">Pendaftaran anggota baru UKM IBC telah resmi dibuka. Kenali lebih dekat berbagai kegiatan kami dan lengkapi formulir pendaftarannya untuk bergabung bersama keluarga besar IBC..</p>
         </header>
 
         <section class="registration-countdown-card" aria-label="Waktu pendaftaran tersisa">
           <div class="registration-countdown-copy">
             <span class="registration-countdown-indicator" aria-hidden="true"></span>
             <div>
-              <p class="registration-countdown-label">Pendaftaran ditutup dalam</p>
+              <p class="registration-countdown-label">Pendaftaran akan ditutup dalam</p>
               <p class="registration-countdown-date">Kamis, 19 November 2026</p>
             </div>
           </div>
@@ -77,11 +87,11 @@
               <div class="registration-card-copy">
                 <p class="registration-card-eyebrow">Ikuti keseruan kami</p>
                 <h2 class="text-lg font-bold">Ikuti Instagram Resmi IBC</h2>
-                <p class="registration-card-description">@ibcikopin · Kegiatan, cerita, dan kabar terbaru dari keluarga IBC.</p>
+                <p class="registration-card-description">@ibcikopin · Kegiatan, cerita, dan kabar terbaru tentang keluarga IBC.</p>
               </div>
             </div>
             <a href="https://www.instagram.com/ibcikopin" target="_blank" rel="noopener noreferrer" class="registration-open-link registration-instagram-link">
-              <i class="fa-brands fa-instagram" aria-hidden="true"></i> Kunjungi Instagram IBC
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i> Kunjungi Instagram Kami
             </a>
           </article>
 
@@ -97,7 +107,7 @@
               </div>
             </div>
             <a href="https://forms.gle/pGhVnHGMBY9KDF3y5" target="_blank" rel="noopener noreferrer" class="registration-open-link registration-form-link">
-              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Buka Google Form Pendaftaran
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Daftar Sekarang
             </a>
           </article>
         </div>
