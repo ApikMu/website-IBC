@@ -97,8 +97,9 @@ body {
 }
 
 .hero-main-title .hero-line--small {
-    font-size: clamp(2.2rem, 4vw, 5.4rem);
+    font-size: clamp(1rem, 5.5vw, 5.4rem);
     letter-spacing: -0.04em;
+    white-space: nowrap;
 }
 
 .hero-main-title .hero-line--medium {
