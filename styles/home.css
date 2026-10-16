@@ -235,8 +235,8 @@ body.page-load #home-page > footer { animation-delay: 0.68s; }
 body.page-load #hero-photo { animation: hero-image-in-dim 1.2s ease-out both; }
 
 @media (max-width: 639px) {
-    .hero-main-title .hero-line--large {
-        font-size: clamp(1rem, 7vw, 2.5rem);
+    #home .hero-line--large {
+        font-size: clamp(0.875rem, min(6.5vw, 6vh), 2.5rem);
         letter-spacing: -0.035em;
     }
 }
